@@ -10,13 +10,12 @@ void quickSort(int *arr, int low, int high)
         int pivot = arr[low + std::rand() % (high - low + 1)];
         int i = low - 1;
         int j = high + 1;
-        while (true)
-        {
+        do {
             while (arr[++i] < pivot);
             while (arr[--j] > pivot);
-            if (i >= j) break;
-            std::swap(arr[i], arr[j]);
+            if (i < j) std::swap(arr[i], arr[j]);
         }
+        while (i < j);
         quickSort(arr, low, j);
         quickSort(arr, j + 1, high);
     }
